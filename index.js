@@ -28,7 +28,7 @@ const Segserver = function(req, res) {
     res.end(JSON.stringify(body));
 };
 
-Segserver.route = function(route, fn) {
+Segserver.pipe = function(route, fn) {
     router[route] = fn;
 };
 

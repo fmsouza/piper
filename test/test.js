@@ -9,23 +9,24 @@ const request = require('../src/request');
 const hostname = 'localhost';
 const port = 3000;
 
-function increment(req, res, body) {
-  body.value = parseInt(body.value) + 1;
-  return body;
-}
-
-function multiply(req, res, body) {
-  body.value = parseInt(body.a) * parseInt(body.b);
-  delete body.a;
-  delete body.b;
-  return body;
-}
 
 describe('test/', () => {
 
   before(() => {
-    segserver.route('/increment', increment);
-    segserver.route('/multiply', multiply);
+
+    function increment(req, res, body) {
+      body.value = parseInt(body.value) + 1;
+      return body;
+    }
+
+    function multiply(req, res, body) {
+      body.value = parseInt(body.a) * parseInt(body.b);
+      delete body.a; delete body.b;
+      return body;
+    }
+
+    segserver.pipe('/increment', increment);
+    segserver.pipe('/multiply', multiply);
 
     server = http.createServer(segserver);
     server.listen(port, hostname);
