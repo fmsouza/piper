@@ -21,15 +21,15 @@ function prepareBody(req, url) {
     return body;
 }
 
-const Segserver = function(req, res) {
+const Piper = function(req, res) {
     const parsedUrl = url.parse(req.url, true);
     let body = prepareBody(req, parsedUrl);
     body = doRouting(parsedUrl, req, res, body);
     res.end(JSON.stringify(body));
 };
 
-Segserver.pipe = function(route, fn) {
+Piper.pipe = function(route, fn) {
     router[route] = fn;
 };
 
-module.exports = Segserver;
+module.exports = Piper;

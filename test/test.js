@@ -3,7 +3,7 @@ const http = require('http');
 const expect = require('expect');
 const querystring = require('querystring');
 
-const segserver = require('../index');
+const piper = require('../index');
 const request = require('../src/request');
 
 const hostname = 'localhost';
@@ -25,10 +25,10 @@ describe('test/', () => {
       return body;
     }
 
-    segserver.pipe('/increment', increment);
-    segserver.pipe('/multiply', multiply);
+    piper.pipe('/increment', increment);
+    piper.pipe('/multiply', multiply);
 
-    server = http.createServer(segserver);
+    server = http.createServer(piper);
     server.listen(port, hostname);
   });
 
