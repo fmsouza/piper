@@ -1,7 +1,7 @@
 {
-  "name": "segserver",
+  "name": "http-pipe",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js Middleware to provide pipelining procedures for each URL segment",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/test.js"
