@@ -6,3 +6,4 @@ const hostname = 'localhost';
 const port = 3000;
 
 require('./default')(hostname, port, piper, request);
+require('./depends')(hostname, port, piper, request);
