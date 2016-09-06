@@ -72,6 +72,9 @@ module.exports = function(hostname, port, piper, request) {
             request.get(`http://${hostname}:${port}/multiplier/decrementor/incrementor/?${query}`)
             .then((res) => {
                 expect(res.statusCode).toBe(400);
+                let body = JSON.parse(res.body);
+                expect(body.status).toBe('PiperError');
+                expect(body.message).toBe('This URL is not allowed.');
                 done();
             });
         });
