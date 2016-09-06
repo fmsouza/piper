@@ -8,6 +8,13 @@
   },
   "author": "Fred Souza (fredericoamsouza@gmail.com)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/fmsouza/piper"
+  },
+  "bugs": {
+    "url": "https://github.com/fmsouza/piper/issues"
+  },
   "devDependencies": {
     "expect": "^1.20.2",
     "mocha": "^3.0.2"
