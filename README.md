@@ -23,8 +23,8 @@ function decrementor(req, res, body) {
     return body;
 }
 
-piper.pipe('/increment', incrementor, { depends: ['multiply'] });
 piper.pipe('/multiply', multiplier);
+piper.pipe('/increment', incrementor, { depends: ['multiply'] });
 piper.pipe('/decrement', decrementor, { depends: ['increment'] });
 
 server = http.createServer(piper);
@@ -49,7 +49,7 @@ http.get(`http://localhost:8080/increment/?value=20`, (res) => {
     });
 });
 
-// '/decrement' pip depending on '/increment' which depends on '/multiply'
+// '/decrement' pipe depending on '/increment' which depends on '/multiply'
 http.get(`http://localhost:8080/multiply/increment/decrement/?a=5&b=4`, (res) => {
     var body = '';
     res.on('data', (chunk) => body += chunk);
