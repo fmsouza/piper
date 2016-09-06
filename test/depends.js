@@ -20,7 +20,7 @@ module.exports = function(hostname, port, piper, request) {
                 return body;
             }
 
-            piper.pipe('/incrementor', incrementor, { depends: ['/multiplier'] });
+            piper.pipe('/incrementor', incrementor, { depends: ['multiplier'] });
             piper.pipe('/multiplier', multiplier);
 
             server = http.createServer(piper);
@@ -35,6 +35,17 @@ module.exports = function(hostname, port, piper, request) {
                 let body = JSON.parse(res.body);
                 expect(body.status).toBe('PiperError');
                 expect(body.message).toBe('This URL is not allowed.');
+                done();
+            });
+        });
+
+        it('should increment the product between 5 and 4 by 1 and become 21', (done) => {
+            const query = querystring.stringify({ 'a': 5, 'b': 4 });
+            request.get(`http://${hostname}:${port}/multiplier/incrementor/?${query}`)
+            .then((res) => {
+                expect(res.statusCode).toBe(200);
+                let body = JSON.parse(res.body);
+                expect(body.value).toBe(21);
                 done();
             });
         });

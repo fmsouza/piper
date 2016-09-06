@@ -6,7 +6,10 @@ const router = {}, rules = {};
 function checkConfig(route, rule, apis) {
     if (rule && rule.depends) {
         let allowed = true;
-        for (let dep of rule.depends) allowed = allowed && (apis.indexOf(`/${dep}`) < apis.indexOf(route));
+        for (let dep of rule.depends) {
+            // console.log(apis, apis.indexOf(dep), apis.indexOf(route), ((apis.indexOf(dep) > -1) && (apis.indexOf(dep) < apis.indexOf(route))));
+            allowed = allowed && ((apis.indexOf(dep) > -1) && (apis.indexOf(dep) < apis.indexOf(route)));
+        }
         if (!allowed) return 'This URL is not allowed.';
         return false;
     }
@@ -16,9 +19,8 @@ function checkConfig(route, rule, apis) {
 function doRouting(url, req, res, body) {
     const apis = url.pathname.split('/');
     for (let api of apis) {
-        let route = `/${api}`;
-        const middleware = router[route];
-        let disallowed = checkConfig(route, rules[route], apis);
+        const middleware = router[`/${api}`];
+        let disallowed = checkConfig(api, rules[`/${api}`], apis);
         if (disallowed) {
             body = { status: 'PiperError', message: disallowed, code: 400 };
             break;
