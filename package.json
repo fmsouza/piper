@@ -1,5 +1,5 @@
 {
-  "name": "piper",
+  "name": "http-piper",
   "version": "1.0.0",
   "description": "Node.js Middleware to provide pipelining procedures for each URL segment",
   "main": "index.js",
@@ -9,7 +9,6 @@
   "author": "Fred Souza (fredericoamsouza@gmail.com)",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^3.3.1",
     "expect": "^1.20.2",
     "mocha": "^3.0.2"
   },

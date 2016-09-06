@@ -1,11 +1,11 @@
-# Piper (pre-alpha)
+# HTTP Piper (pre-alpha)
 Node.js Middleware to provide pipelining procedures for each URL segment
 
 ## Example
 
 ```javascript
 const http = require('http');
-const piper = require('piper');
+const piper = require('http-piper');
 
 function incrementor(req, res, body) {
     body.value = parseInt(body.value) + 1;
