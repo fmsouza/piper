@@ -1,6 +1,6 @@
 {
   "name": "http-piper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.js Middleware to provide pipelining procedures for each URL segment",
   "main": "index.js",
   "scripts": {
