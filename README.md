@@ -1,6 +1,10 @@
 # HTTP Piper (pre-alpha)
 Node.js Middleware to provide pipelining procedures for each URL segment
 
+## Installation
+`npm install http-piper`
+
+
 ## Example
 
 ```javascript
